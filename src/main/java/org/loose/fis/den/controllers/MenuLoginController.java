@@ -48,18 +48,14 @@ public class MenuLoginController {
             UserService.checkUserData(usernameField.getText(), passwordField.getText(), (String) role.getValue());
             loginMessage.setText("Login successfully!");
             userRole = (String) role.getValue();
-            if (userRole.equals("Dentist")) {
-
-
-                Parent root2 = FXMLLoader.load(getClass().getClassLoader().getResource("DentistGUI.fxml"));
+            if (userRole.equals("Pacient")) {
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
                 Stage window = (Stage) ((Node) login.getSource()).getScene().getWindow();
-                ;
-                window.setTitle("DentistGUI");
-                window.setScene(new Scene(root2, 600, 460));
+                window.setScene(new Scene(root, 1000, 667));
                 window.show();
 
             } else {
-                loginMessage.setText("Mesaj provizoriu");
+
             }
         } catch (UnknownUserException e) {
             loginMessage.setText(e.getMessage());

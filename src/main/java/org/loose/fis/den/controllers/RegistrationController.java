@@ -45,7 +45,11 @@ public class RegistrationController {
             registrationMessage.setText(e.getMessage());
         }
     }
-
-
+    public void goToMenuAction(javafx.event.ActionEvent login) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
+        Stage window = (Stage)((Node)login.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root,1000,667));
+        window.show();
+    }
 
 }
