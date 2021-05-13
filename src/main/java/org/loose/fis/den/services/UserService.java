@@ -37,6 +37,31 @@ public class UserService {
         }
     }
 
+    public static void checkUserData(String username, String password, String role) throws UnknownUserException, IncorrectPasswordException, RoleDoesNotMatchException {
+        int checkname=0;
+        int checkpass=0;
+        int checkrole=0;
+
+
+        for (User user : userRepository.find()) {
+            if (Objects.equals(username, user.getUsername())) {
+                checkname=1;
+                if (Objects.equals(encodePassword(username,password), user.getPassword())) {
+                    checkpass=1;
+                    if (Objects.equals(role, user.getRole())) {
+                        checkrole = 1;
+                    }
+                }
+            }
+        }
+        if (checkname == 0)
+            throw new UnknownUserException();
+        if (checkpass == 0)
+            throw new IncorrectPasswordException();
+        if (checkrole == 0)
+            throw new RoleDoesNotMatchException();
+
+    }
 
     private static void checkNumber(String phone) throws InvalidNumberException {
         String regex = "\\d{10}"; //regex for 10 digits
