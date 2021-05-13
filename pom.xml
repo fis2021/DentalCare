@@ -11,7 +11,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <main.class.name>org.loose.fis.den.Main</main.class.name>
-        <final.jar.name>simple-registration-example</final.jar.name>
+        <final.jar.name>DentalCare</final.jar.name>
     </properties>
 
     <dependencies>
