@@ -2,7 +2,7 @@ package org.loose.fis.den.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
-import org.loose.fis.den.exceptions.UsernameAlreadyExistsException;
+import org.loose.fis.den.exceptions.*;
 import org.loose.fis.den.model.User;
 
 import java.nio.charset.StandardCharsets;
@@ -11,7 +11,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 import static org.loose.fis.den.services.FileSystemService.getPathToFile;
-import org.loose.fis.den.exceptions.InvalidNumberException;
 
 public class UserService {
 
@@ -37,6 +36,7 @@ public class UserService {
                 throw new UsernameAlreadyExistsException(username);
         }
     }
+
 
     private static void checkNumber(String phone) throws InvalidNumberException {
         String regex = "\\d{10}"; //regex for 10 digits
@@ -64,7 +64,5 @@ public class UserService {
         }
         return md;
     }
-
-
 
 }
