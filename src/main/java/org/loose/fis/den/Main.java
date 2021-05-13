@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.loose.fis.den.services.FileSystemService;
 import org.loose.fis.den.services.UserService;
 
@@ -18,8 +19,9 @@ public class Main extends Application {
         initDirectory();
         UserService.initDatabase();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("register.fxml"));
-        primaryStage.setTitle("Registration Example");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.setTitle("DentalCare");
+        primaryStage.setScene(new Scene(root, 1000, 667));
         primaryStage.show();
     }
 
