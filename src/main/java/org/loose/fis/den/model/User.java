@@ -7,11 +7,17 @@ public class User {
     private String username;
     private String password;
     private String role;
+    private String name;
+    private String mail;
+    private String number;
 
-    public User(String username, String password, String role) {
+    public User(String username, String password, String role, String name, String mail, String number) {
         this.username = username;
         this.password = password;
         this.role = role;
+        this.mail = mail;
+        this.name = name;
+        this.number = number;
     }
 
     public User() {
@@ -39,6 +45,30 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return mail;
+    }
+
+    public void setEmail(String email) {
+        this.mail = email;
+    }
+
+    public String getPhoneNumber() {
+        return number;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.number = phoneNumber;
     }
 
     @Override

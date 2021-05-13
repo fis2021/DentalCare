@@ -11,6 +11,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 import static org.loose.fis.den.services.FileSystemService.getPathToFile;
+import org.loose.fis.den.exceptions.InvalidNumberException;
 
 public class UserService {
 
@@ -24,9 +25,10 @@ public class UserService {
         userRepository = database.getRepository(User.class);
     }
 
-    public static void addUser(String username, String password, String role) throws UsernameAlreadyExistsException {
+    public static void addUser(String username, String password, String role, String name, String mail, String number) throws UsernameAlreadyExistsException, InvalidNumberException {
         checkUserDoesNotAlreadyExist(username);
-        userRepository.insert(new User(username, encodePassword(username, password), role));
+        checkNumber(number);
+        userRepository.insert(new User(username, encodePassword(username, password), role, name, mail, number));
     }
 
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
@@ -34,6 +36,12 @@ public class UserService {
             if (Objects.equals(username, user.getUsername()))
                 throw new UsernameAlreadyExistsException(username);
         }
+    }
+
+    private static void checkNumber(String phone) throws InvalidNumberException {
+        String regex = "\\d{10}"; //regex for 10 digits
+        if(phone.matches(regex)==false)
+        throw new InvalidNumberException();
     }
 
     private static String encodePassword(String salt, String password) {
@@ -56,6 +64,7 @@ public class UserService {
         }
         return md;
     }
+
 
 
 }
