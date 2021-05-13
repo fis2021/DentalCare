@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.den.controllers.PacientController">
+    <children>
+        <ImageView fitHeight="667.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@fundal-register.jpeg" />
+            </image>
+        </ImageView>
+        <Button layoutX="69.0" layoutY="149.0" mnemonicParsing="false" onAction="#setUpAppointment" text="Set up an appointment">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+        <Button layoutX="68.0" layoutY="210.0" mnemonicParsing="false" onAction="#seeYourAppointments" prefHeight="39.0" prefWidth="208.0" text="See your appointment">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+        <Button layoutX="79.0" layoutY="554.0" mnemonicParsing="false" onAction="#logoutAction" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #055C9D;" text="Log out" textFill="WHITE">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>
