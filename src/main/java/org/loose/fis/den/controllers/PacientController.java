@@ -8,9 +8,9 @@ import javafx.stage.Stage;
 
 public class PacientController {
 
-    public void logoutAction(javafx.event.ActionEvent login) throws Exception{
+    public void logoutAction(javafx.event.ActionEvent logout) throws Exception{
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
-        Stage window = (Stage)((Node)login.getSource()).getScene().getWindow();
+        Stage window = (Stage)((Node)logout.getSource()).getScene().getWindow();
         window.setScene(new Scene(root,1000,667));
         window.show();
     }
@@ -22,9 +22,9 @@ public class PacientController {
         window.show();
     }
 
-    public void seeYourAppointments(javafx.event.ActionEvent login) throws Exception{
+    public void seeYourAppointments(javafx.event.ActionEvent event) throws Exception{
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("appointments.fxml"));
-        Stage window = (Stage)((Node)login.getSource()).getScene().getWindow();
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root,1000,667));
         window.show();
     }

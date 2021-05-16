@@ -1,5 +1,7 @@
 package org.loose.fis.den.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -22,10 +24,8 @@ public class AppointmentsController {
         updateListView();
     }
 
-    private void updateListView() {
-    }
 
-    private static ObjectRepository<Appoint> AppointRepository = AppointService.getServicesRepository();
+    private static ObjectRepository<Appoint> AppointRepository = AppointService.getAppointsRepository();
     @FXML
     public ListView<String> appointmentsList = new ListView<String>();
 
@@ -41,5 +41,15 @@ public class AppointmentsController {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root,1000,667));
         window.show();
+    }
+
+    public void updateListView(){
+        ObservableList<String> items = FXCollections.observableArrayList();
+        for (Appoint ap : AppointRepository.find()) {
+            if (loggedUser.getActualUser().equals(ap.getPacientname())) {
+                items.add(ap.appointstring());
+                appointmentsList.setItems(items);
+            }
+        }
     }
 }

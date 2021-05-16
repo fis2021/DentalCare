@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.loose.fis.den.exceptions.InvalidNumberException;
+import org.loose.fis.den.exceptions.NameTakenException;
 import org.loose.fis.den.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.den.services.UserService;
 public class RegistrationController {
@@ -39,7 +40,7 @@ public class RegistrationController {
         try {
             UserService.addUser(usernameField.getText(), passwordField.getText(), (String) role.getValue(), fullnameField.getText(), mailField.getText(), numberField.getText() );
             registrationMessage.setText("Account created successfully!");
-        } catch (UsernameAlreadyExistsException | InvalidNumberException e) {
+        } catch (UsernameAlreadyExistsException | InvalidNumberException | NameTakenException e) {
             registrationMessage.setText(e.getMessage());
         }
     }

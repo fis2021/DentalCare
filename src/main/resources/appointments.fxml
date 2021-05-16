@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="1000.0" style="-fx-background-color: #055C9D;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.den.controllers.AppointmentsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="1000.0" style="-fx-background-color: #055C9D;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.den.controllers.AppointmentsController">
    <children>
       <ListView fx:id="appointmentsList" layoutX="147.0" layoutY="87.0" prefHeight="512.0" prefWidth="696.0" />
       <Label layoutX="290.0" layoutY="13.0" prefHeight="70.0" prefWidth="506.0" text="Your appointments" textFill="WHITE">

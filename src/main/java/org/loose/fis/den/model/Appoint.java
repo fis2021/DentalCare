@@ -1,10 +1,13 @@
 package org.loose.fis.den.model;
 
+import org.dizitart.no2.objects.Id;
+
 public class Appoint {
-    String pacientname;
-    String doctorname;
-    String operation;
-    String dateandtime;
+    @Id
+    private String pacientname;
+    private String doctorname;
+    private String operation;
+    private String dateandtime;
 
     public Appoint(){
     }
