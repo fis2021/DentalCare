@@ -13,7 +13,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
-import javafx.stage.StageStyle;
 import org.loose.fis.den.exceptions.IncorrectPasswordException;
 import org.loose.fis.den.exceptions.RoleDoesNotMatchException;
 import org.loose.fis.den.exceptions.UnknownUserException;
@@ -24,8 +23,6 @@ public class MenuLoginController {
 
     @FXML
     private Button cancelButton;
-    @FXML
-    private Button goToRegister;
     @FXML
     private Text loginMessage;
     @FXML
