@@ -31,7 +31,7 @@ public class Appoint {
         return this.dateandtime;
     }
     public String appointstring(){
-        return this.pacientname+this.operation+this.doctorname;
+        return this.pacientname+this.operation+this.doctorname+this.dateandtime;
     }
 
     public void setDateandtime(String dateandtime) {

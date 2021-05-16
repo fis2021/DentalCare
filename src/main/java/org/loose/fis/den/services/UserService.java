@@ -35,7 +35,7 @@ public class UserService {
         userRepository.insert(new User(username, encodePassword(username, password), role, name, mail, number));
     }
 
-    private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
+    static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
         for (User user : userRepository.find()) {
             if (Objects.equals(username, user.getUsername()))
                 throw new UsernameAlreadyExistsException(username);
@@ -82,7 +82,7 @@ public class UserService {
             throw new InvalidNumberException();
     }
 
-    private static String encodePassword(String salt, String password) {
+    static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));
 
@@ -102,5 +102,6 @@ public class UserService {
         }
         return md;
     }
+
 
 }

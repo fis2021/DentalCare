@@ -4,7 +4,6 @@ import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.den.model.Appoint;
 
-import static org.loose.fis.den.services.FileAppointService.getPathToFile;
 
 public class AppointService {
     private static ObjectRepository<Appoint> appointObjectRepository;
@@ -15,7 +14,7 @@ public class AppointService {
 
     public static void initDatabase() {
         Nitrite db = Nitrite.builder()
-                .filePath(FileAppointService.getPathToFile("appointments.db").toFile())
+                .filePath(FileSystemService.getPathToFile("appointments.db").toFile())
                 .openOrCreate("test", "test");
 
         appointObjectRepository = db.getRepository(Appoint.class);
@@ -24,6 +23,13 @@ public class AppointService {
     public static void deleteAppointAsAPacient(String username,String operation){
         for (Appoint op : appointObjectRepository.find()){
             if (username.equals(op.getPacientname())&&operation.equals(op.appointstring())) {
+                appointObjectRepository.remove(op);
+            }
+        }
+    }
+    public static void deleteAppointAsADoc(String name,String operation){
+        for(Appoint op : appointObjectRepository.find()){
+            if(name.equals(op.getDoctorname())&&operation.equals(op.appointstring())){
                 appointObjectRepository.remove(op);
             }
         }
