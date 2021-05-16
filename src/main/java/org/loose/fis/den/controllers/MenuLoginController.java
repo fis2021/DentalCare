@@ -46,14 +46,16 @@ public class MenuLoginController {
     public void LoginAction(javafx.event.ActionEvent login) throws Exception {
         try {
             UserService.checkUserData(usernameField.getText(), passwordField.getText(), (String) role.getValue());
+
             loginMessage.setText("Login successfully!");
+
             userRole = (String) role.getValue();
+
             if (userRole.equals("Pacient")) {
                 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Pacient.fxml"));
                 Stage window = (Stage) ((Node) login.getSource()).getScene().getWindow();
                 window.setScene(new Scene(root, 1000, 667));
                 window.show();
-
             } else {
 
             }

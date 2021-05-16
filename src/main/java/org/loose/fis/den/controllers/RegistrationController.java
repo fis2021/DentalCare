@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 import org.loose.fis.den.exceptions.InvalidNumberException;
 import org.loose.fis.den.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.den.services.UserService;
-
 public class RegistrationController {
 
     @FXML
@@ -30,7 +29,6 @@ public class RegistrationController {
     private TextField mailField;
     @FXML
     private TextField numberField;
-
     @FXML
     public void initialize() {
         role.getItems().addAll("Doctor", "Pacient");
