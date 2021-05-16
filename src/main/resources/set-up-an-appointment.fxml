@@ -23,7 +23,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="397.0" layoutY="71.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="101.0" text="View profile">
+      <Button layoutX="397.0" layoutY="71.0" mnemonicParsing="false" onAction="#viewAction" prefHeight="40.0" prefWidth="101.0" text="View profile">
          <font>
             <Font size="14.0" />
          </font>

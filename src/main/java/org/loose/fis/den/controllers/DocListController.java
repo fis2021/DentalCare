@@ -38,7 +38,7 @@ public class DocListController {
         }
     }
 
-    public void viewProfile(javafx.event.ActionEvent event) throws Exception{
+    public void viewAction(javafx.event.ActionEvent event) throws Exception{
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("doc-profile.fxml"));
 
         if(docList.getSelectionModel().getSelectedItem()!=null) {
