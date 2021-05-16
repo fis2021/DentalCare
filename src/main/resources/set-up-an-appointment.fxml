@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="1001.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="667.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@fundal-register.jpeg" />
+         </image>
+      </ImageView>
+      <Label layoutX="38.0" layoutY="11.0" prefHeight="53.0" prefWidth="408.0" text="Set up an appointment" textFill="WHITE">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <ListView fx:id="docList" layoutX="40.0" layoutY="69.0" prefHeight="425.0" prefWidth="315.0" />
+      <Button layoutX="763.0" layoutY="587.0" mnemonicParsing="false" onAction="#backAction" prefHeight="40.0" prefWidth="101.0" style="-fx-background-color: #055C9D;" text="Back" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="397.0" layoutY="71.0" mnemonicParsing="false" onAction="#viewProfile" prefHeight="40.0" prefWidth="101.0" text="View profile">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
