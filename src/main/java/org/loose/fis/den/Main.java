@@ -6,7 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.loose.fis.den.services.AppointService;
 import org.loose.fis.den.services.FileSystemService;
+import org.loose.fis.den.services.OperationService;
 import org.loose.fis.den.services.UserService;
 
 import java.nio.file.Files;
@@ -18,6 +20,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         initDirectory();
         UserService.initDatabase();
+        AppointService.initDatabase();
+        OperationService.initDatabase();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root, 1000, 667));
@@ -25,7 +29,7 @@ public class Main extends Application {
     }
 
     private void initDirectory() {
-        Path applicationHomePath = FileSystemService.APPLICATION_HOME_PATH;
+        Path applicationHomePath = FileSystemService.getPathToFile();
         if (!Files.exists(applicationHomePath))
             applicationHomePath.toFile().mkdirs();
     }

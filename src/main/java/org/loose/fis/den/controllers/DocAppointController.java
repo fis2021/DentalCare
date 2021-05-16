@@ -14,10 +14,14 @@ import org.loose.fis.den.model.Appoint;
 import org.loose.fis.den.model.loggedUser;
 import org.loose.fis.den.services.AppointService;
 
+
 import java.io.IOException;
 
+public class DocAppointController {
 
-public class AppointmentsController {
+    @FXML
+    public ListView<String> docApp = new ListView<String>();
+
 
     @FXML
     public void initialize() throws IOException {
@@ -26,29 +30,24 @@ public class AppointmentsController {
 
     private static ObjectRepository<Appoint> AppointRepository = AppointService.getAppointsRepository();
 
-    @FXML
-    public ListView<String> appointmentsList = new ListView<String>();
-
-
-
-    public void deleteAction() throws Exception{
-        if(appointmentsList.getSelectionModel().getSelectedItem()!=null)
-            AppointService.deleteAppointAsAPacient(loggedUser.getActualUser(),appointmentsList.getSelectionModel().getSelectedItem().toString());
+    public void cancelAction() throws Exception{
+        if(docApp.getSelectionModel().getSelectedItem()!=null)
+            AppointService.deleteAppointAsADoc(loggedUser.getActualUser(),docApp.getSelectionModel().getSelectedItem().toString());
     }
 
     public void backAction(javafx.event.ActionEvent event) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Pacient.fxml"));
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root,1000,667));
+        Parent root1 = FXMLLoader.load(getClass().getClassLoader().getResource("doctor.fxml"));
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root1, 1000, 667));
         window.show();
     }
 
     public void updateListView(){
         ObservableList<String> items = FXCollections.observableArrayList();
-        for (Appoint ap : AppointRepository.find()) {
-            if (loggedUser.getActualUser().equals(ap.getPacientname())) {
-                items.add(ap.appointstring());
-                appointmentsList.setItems(items);
+        for (Appoint app : AppointRepository.find()) {
+            if (app.getDoctorname().equals(loggedUser.getActualUser())) {
+                items.add(app.getPacientname()+app.getOperation()+app.getDoctorname()+app.getDateandtime());
+                docApp.setItems(items);
             }
         }
     }
