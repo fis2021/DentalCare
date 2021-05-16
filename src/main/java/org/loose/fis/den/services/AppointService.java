@@ -4,20 +4,21 @@ import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.den.model.Appoint;
 
+import static org.loose.fis.den.services.FileAppointService.getPathToFile;
 
 public class AppointService {
     private static ObjectRepository<Appoint> appointObjectRepository;
 
-    public static ObjectRepository<Appoint> getServicesRepository() {
+    public static ObjectRepository<Appoint> getAppointsRepository() {
         return appointObjectRepository;
     }
 
     public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
-                .filePath(FileSystemService.getPathToFile("appointments.db").toFile())
+        Nitrite db = Nitrite.builder()
+                .filePath(FileAppointService.getPathToFile("appointments.db").toFile())
                 .openOrCreate("test", "test");
 
-        appointObjectRepository = database.getRepository(Appoint.class);
+        appointObjectRepository = db.getRepository(Appoint.class);
     }
 
     public static void deleteAppointAsAPacient(String username,String operation){

@@ -16,6 +16,10 @@ public class UserService {
 
     private static ObjectRepository<User> userRepository;
 
+    public static ObjectRepository<User> getUserRepository() {
+        return userRepository;
+    }
+
     public static void initDatabase() {
         Nitrite database = Nitrite.builder()
                 .filePath(getPathToFile("registration-example.db").toFile())
@@ -24,9 +28,10 @@ public class UserService {
         userRepository = database.getRepository(User.class);
     }
 
-    public static void addUser(String username, String password, String role, String name, String mail, String number) throws UsernameAlreadyExistsException, InvalidNumberException {
+    public static void addUser(String username, String password, String role, String name, String mail, String number) throws UsernameAlreadyExistsException, InvalidNumberException, NameTakenException {
         checkUserDoesNotAlreadyExist(username);
         checkNumber(number);
+        checkName(name);
         userRepository.insert(new User(username, encodePassword(username, password), role, name, mail, number));
     }
 
@@ -36,6 +41,14 @@ public class UserService {
                 throw new UsernameAlreadyExistsException(username);
         }
     }
+
+    private static void checkName(String name) throws NameTakenException {
+        for (User user : userRepository.find()) {
+            if (Objects.equals(name, user.getName()))
+                throw new NameTakenException(name);
+        }
+    }
+
 
     public static void checkUserData(String username, String password, String role) throws UnknownUserException, IncorrectPasswordException, RoleDoesNotMatchException {
         int checkname=0;
@@ -66,7 +79,7 @@ public class UserService {
     private static void checkNumber(String phone) throws InvalidNumberException {
         String regex = "\\d{10}"; //regex for 10 digits
         if(phone.matches(regex)==false)
-        throw new InvalidNumberException();
+            throw new InvalidNumberException();
     }
 
     private static String encodePassword(String salt, String password) {
