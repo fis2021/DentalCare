@@ -34,4 +34,7 @@ public class AppointService {
             }
         }
     }
+    public static void addAppointment(String pacient, String doctor,String operation, String date)  {
+        appointObjectRepository.insert(new Appoint(pacient, doctor, operation, date));
+    }
 }

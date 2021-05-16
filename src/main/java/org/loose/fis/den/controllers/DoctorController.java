@@ -61,9 +61,9 @@ public class DoctorController {
     }
 
     public void operationEditor(javafx.event.ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("lista.fxml"));
+        Parent root1 = FXMLLoader.load(getClass().getClassLoader().getResource("lista.fxml"));
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root,1000,667));
+        window.setScene(new Scene(root1,1000,667));
         window.show();
     }
 
